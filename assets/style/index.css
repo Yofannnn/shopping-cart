@@ -1,0 +1,304 @@
+body::-webkit-scrollbar {
+    width: 6px;
+}
+body::-webkit-scrollbar-thumb {
+    background: #888;
+}
+/* header */
+header{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+header .container-text{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+header .container-text h1{
+    font-size: 100px;
+}
+header .container-text p{
+    font-size: 25px;
+}
+header .container-bg{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/header-miquel-parera-unsplash.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+/* about */
+.about{
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    background-color: #ddded9;
+}
+.about .container-parallax{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.about .container-parallax .picture{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about .container-parallax .picture img{
+    width: 50%;
+    height: fit-content;
+}
+.about .container-parallax .picture h3{
+    font-size: 35px;
+    transform: rotate(-10deg) translateY(-25px);
+}
+.about .container-parallax .text{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about .container-parallax .text h3{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+.about .container-parallax .text p{
+    font-size: 19px;
+    width: 65%;
+}
+.about .container-bg-parallax{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.about .container-bg-parallax img{
+    width: fit-content;
+    height: 80%;
+    margin: auto;
+    align-self: center;
+}
+/* two image wrapper */
+.two-image-wrapper{
+    width: 100%;
+    height: 750px;
+    display: flex;
+}
+.two-image-wrapper .img{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+.two-image-wrapper .img .img-1 , .two-image-wrapper .img .img-2{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    transform: scale(1.3);
+}
+.two-image-wrapper .img .img-1{
+    background-image: url('../img/two-img-wrapper-mike-von-unsplash.jpg');
+}
+.two-image-wrapper .img .img-2{
+    background-image: url('../img/two-img-wrapper-dushawn-jovic-unsplash.jpg');
+}
+.two-image-wrapper .img .img-1.parallax , .two-image-wrapper .img .img-2.parallax{
+    transform: scale(1);
+    transition: all 5s;
+}
+/* description brand */
+.description-brand{
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background-color: whitesmoke;
+}
+.description-brand .container-bg{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.description-brand .container-bg h3{
+    font-size: 50px;
+    opacity: 0;
+    transform: translateY(50px);
+}
+.description-brand .container-bg h3.parallax{
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 4s;
+}
+.description-brand .container-bg p{
+    width: 20%;
+    transform: translate(20% , 50px);
+    opacity: 0;
+}
+.description-brand .container-bg p.parallax{
+    width: 20%;
+    transform: translate(20% , 0px);
+    opacity: 1;
+    transition: all 4s;
+}
+.description-brand .container-img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.description-brand .container-img .static{
+    width: 50%;
+}
+.description-brand .container-img .static img{
+    width: 82%;
+    height: fit-content;
+    opacity: 0;
+}
+.description-brand .container-img .static img.parallax{
+    transform: translateY(30px);
+    opacity: 1;
+    transition: all 2s;
+}
+.description-brand .container-img .move{
+    width: 45%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+.description-brand .container-img .move img{
+    width: 200px;
+    height: fit-content;
+    /* position: absolute; */
+    z-index: 5;
+}
+/* product type */
+.product-type{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5%;
+    background-color: whitesmoke;
+}
+.product-type h1{
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    font-size: 45px;
+}
+.product-type .type{
+    width: 35%;
+    margin-bottom: 40px;
+}
+.product-type .type .img{
+    background-size: cover;
+    background-position: 0 60%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+}
+.product-type .type .img h3{
+    width: 100%;
+    height: 0%;
+    font-size: 25px;
+    background-color: rgb(0, 0, 0, .6);
+    color: white;
+    text-align: center;
+    line-height: 0px;
+    opacity: 0;
+    transition: height .3s, opacity .3s, line-height .3s;
+}
+.product-type .type .img:hover h3{
+    height: 100%;
+    line-height: 200px;
+    margin: auto;
+    opacity: 1;
+}
+.product-type .type .img h3 img{
+    height: 25px;
+    width: fit-content;
+    filter: invert(100%);
+    transform: translate(7px , 5px);
+}
+.product-type .type .text{
+    width: 100%;
+    text-align: center;
+}
+.product-type .type .text h3{
+    font-size: 21px;
+    padding-top: 10px;
+}
+.product-type .type .text p{
+    font-size: 18px;
+    padding-top: 5px;
+}
+.product-type .type.one .img{
+    background-image: url('../img/type-1.png');
+} 
+.product-type .type.two .img{
+    background-image: url('../img/type-2.png');
+} 
+.product-type .type.three .img{
+    background-image: url('../img/type-3.png');
+} 
+.product-type .type.four .img{
+    background-image: url('../img/type-4.png');
+    background-position: 0 57%;
+} 
+/* recommendation */
+.recommendation{
+    width: 100%;
+    background-color: whitesmoke;
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
+    margin-bottom: 80vh;
+}
+.recommendation h1{
+    text-align: center;
+    padding-top: 60px;
+    font-size: 40px;
+}
+.scroll-horizontal::-webkit-scrollbar {
+    height: 6px;
+}
+.scroll-horizontal::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: #888;
+}
+.recommendation .container {
+    display: flex;
+    overflow-x: scroll;
+    padding: 20px;
+    width: 88%;
+    margin: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-top: 24px;
+    border-radius: 8px;
+    gap: 20px;
+}

@@ -1,0 +1,144 @@
+/* cart body */
+.body-cart{
+    width: 100%;
+    height: calc(100vh - 80px);
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.list-product::-webkit-scrollbar {
+    width: 0;
+}
+.list-product::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: transparent;
+}
+.list-product{
+    width: 600px;
+    overflow-y: auto;
+}
+.list-product .container{
+    width: 100%;
+    height: 140px;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: .8px solid rgb(0, 0, 0, .2);
+}
+.list-product .container .image{
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+.list-product .container .image img{
+    width: 90%;
+    height: fit-content;
+    margin: auto;
+    cursor: pointer;
+}
+.list-product .container .description{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+}
+.list-product .container .description h3.title{
+    cursor: pointer;
+    font-size: 20px;
+    width: fit-content;
+    max-width: 70%;
+}
+.list-product .container .description h3.title:hover{
+    text-decoration: underline;
+}
+.list-product .container .description h3.total-price{
+    font-size: 17.5px;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+}
+.list-product .container .description .type{
+    color: #707072;
+}
+.list-product .container .description .price{
+    color: #707072;
+}
+.list-product .container .description .size{
+    color: #707072;
+}
+.list-product .container .description .cart-buttons-increment-decrement{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.list-product .container .description .cart-buttons-increment-decrement .quantity{
+    border: .5px solid black;
+    padding: 5px 10px;
+    margin: 0px 15px;
+}
+.list-product .container .description .cart-buttons-increment-decrement .increment,
+.list-product .container .description .cart-buttons-increment-decrement .decrement{
+    cursor: pointer;
+    border: .5px solid black;
+    border-radius: 50px;
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 20px;
+}
+.list-product .container .description .remove{
+    position: absolute;
+    bottom: 2px;
+    right: 15px;
+}
+.list-product .container .description .remove img{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.total-product{
+    width: 300px;
+    display: flex;
+    justify-content: end;
+}
+.total-product .wrapped{
+    width: 90%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.total-product h1{
+    font-size: 28px;
+    margin-top: 20px;
+}
+.total-product .subtotal{
+    font-size: 19px;
+    margin-top: 15px;
+}
+.total-product .discount{
+    font-size: 19px;
+    margin-top: 15px;
+}
+.total-product .total{
+    font-size: 19px;
+    margin-top: 15px;
+}
+.total-product button.checkout{
+    width: 80%;
+    padding: 8px 0px;
+    font-size: 16px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* when cart is empty */
+.cart-empty{
+    font-size: 50px;
+    margin: auto;
+    text-align: center;
+}

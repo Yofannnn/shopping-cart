@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../assets/style/css-reset.css">
+    <link rel="stylesheet" href="../assets/style/navbar.css">
+    <link rel="stylesheet" href="../assets/style/card.css">
+    <link rel="stylesheet" href="../assets/style/modal.css">
+    <title>LOGIN</title>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="fixed">
+        <div class="logo"><a href="../index.html"><img src="../assets/svg/logo-svgrepo-com.svg" alt=""></a></div>
+        <div class="menu">
+            <ul>
+                <li><a href="../type.html">Product</a></li>
+                <li><a href="">Aboute Us</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+        <div class="container-input">
+            <input type="search" placeholder="Search" name="search" class="input input-search">
+            <button class="btn-search"><img src="../assets/svg/search-svgrepo-com.svg" alt=""></button>
+        </div>
+        <div class="account-cart">
+            <div class="account">
+                <a href="login.html">
+                    <img src="../assets/svg/account-avatar-man-svgrepo-com.svg" alt="">
+                    <p>Account</p>
+                </a>
+            </div>
+            <div class="cart">
+                <a href="../cart.html"><img src="../assets/svg/cart-svgrepo-com.svg" alt=""></a>
+                <span class="amountCart"></span>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- log in session -->
+        <div id="login-session">
+            <h1>LOG IN</h1>
+            <form action="">
+                <fieldset class="login">
+                    <legend></legend>
+                    <div class="inputWrapper">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Entar Your Email Address" class="textInput">
+                    </div>
+                    <div class="inputWrapper">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Entar Your Password" class="textInput">
+                    </div>
+                    <div>
+                        <div class="primary">
+                            <button type="submit" class="bt-login">Log In</button>
+                            <div class="forget-password"><a href="">Forget Pasword?</a></div>
+                        </div>
+                        <div class="secondary">
+                            <a href="signup.html">Sign Up Now!</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+    <script src="../assets/script/bedge-amount-cart.js"></script>
+    <script src="../assets/script/navbar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* container */
+.container{
+    width: 500px;
+    margin: auto;
+    padding-top: 100px;
+    margin-bottom: 40px;
+}
+/* login session */
+#login-session,
+#signup-session{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+}
+#login-session h1,
+#signup-session h1{
+    font-size: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#login-session form,
+#signup-session form{
+    width: 80%;
+}
+#login-session form fieldset,
+#signup-session form fieldset{
+    width: 100%;
+}
+#login-session form label,
+#signup-session form label{
+    display: block;
+    margin: 15px auto 5px auto;
+    font-size: 18px;
+}
+#login-session form input,
+#signup-session form input{
+    width: 90%;
+    background-color: #fff;
+    padding: 0.8rem 0.8rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+#login-session form button,
+#signup-session form button{
+    width: 95%;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #4F46E5;
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    border: none;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+#login-session form .forget-password{
+    margin-top: 10px;
+    text-decoration: underline;
+    text-align: center;
+}
+#login-session form .secondary{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    text-align: center;
+}
+#login-session form .secondary:hover{
+    text-decoration: underline;
+}
+/* signup session */
+#signup-session form select{
+    width: 90%;
+    background-color: #fff;
+    padding: 0.8rem 0.8rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+#signup-session form .secondary{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-decoration: underline;
+    text-align: center;
+}

@@ -1,0 +1,55 @@
+/* card style css */
+.card {
+    flex: 0 0 190px;
+    height: 300px;
+    padding: .5em;
+    overflow: hidden;
+    border-radius: .5rem;
+    transition: all .4s;
+    margin: 10px;
+}
+.card:hover{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.35);
+    transform: translateY(-2px);
+}
+.card .card-img {
+    height: 64%;
+    width: 100%;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+.card .card-img img{
+    width: 100%;
+    height: fit-content;
+    transform: translateY(-10%);
+}
+.card .card-info{
+    padding: 9% 5px 0 5px;
+}
+.card .text-title {
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 1.5;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.card .text-type {
+    font-weight: 500;
+    font-size: .9em;
+    line-height: 1.5;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.card .card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6% 5px 0 5px;
+}
+.card .text-price{
+    font-size: 1.1em;
+    font-weight: 800;
+}
