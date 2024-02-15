@@ -171,7 +171,7 @@ let rupiah = new Intl.NumberFormat('id-ID', {
 function cartItem(id, title, type, price, image, item, size){
   return `<div class="container" data-idcart="${id}${size}">
                 <div class="image">
-                    <img src="../assets/img/img-product/${image}" alt="" onclick="showCartItemsDetails(this)">
+                    <img src="assets/img/img-product/${image}" alt="" onclick="showCartItemsDetails(this)">
                 </div>
                 <div class="description">
                     <h3 class="title" onclick="showCartItemsDetails(this)">${title}</h3>
@@ -185,7 +185,7 @@ function cartItem(id, title, type, price, image, item, size){
                       <i onclick="increment(this)" class="increment">+</i>
                     </div>
                     <div class="remove" onclick="removeItem(this)">
-                        <img src="../assets/svg/garbage-trash-svgrepo-com.svg" alt="">
+                        <img src="assets/svg/garbage-trash-svgrepo-com.svg" alt="">
                     </div>
                 </div>
             </div>`
@@ -194,7 +194,7 @@ function cartItem(id, title, type, price, image, item, size){
 function productDetail(id, title, type, price, image, description, item, size){
   return `<div class="modal product-detail-click" data-idmodal="${id}">
             <div class="container-left">
-                <div class="img"><img src="../assets/img/img-product/${image}" alt=""></div>
+                <div class="img"><img src="assets/img/img-product/${image}" alt=""></div>
             </div>
             <div class="container-right">
                 <h3 class="modal-title">${title}</h3>

@@ -153,7 +153,7 @@ let rupiah = new Intl.NumberFormat('id-ID', {
 
 function card(id, title, type, price, image) {
   return ` <div id="${id}" class="card" data-idcard="${id}" onclick="showProductDetails(this)">
-                <div class="card-img"><img src="../assets/img/img-product/${image}" alt=""></div>
+                <div class="card-img"><img src="assets/img/img-product/${image}" alt=""></div>
                 <div class="card-info">
                     <p class="text-title">${title}</p>
                     <p class="text-type">${type}</p>
@@ -167,7 +167,7 @@ function card(id, title, type, price, image) {
 function productDetail(id, title, type, price, description, image){
     return `<div class="modal product-detail-click" data-idmodal="${id}">
               <div class="container-left">
-                  <div class="img"><img src="../assets/img/img-product/${image}" alt=""></div>
+                  <div class="img"><img src="assets/img/img-product/${image}" alt=""></div>
               </div>
               <div class="container-right">
                   <h3 class="modal-title">${title}</h3>

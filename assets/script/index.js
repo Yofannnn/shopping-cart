@@ -162,7 +162,7 @@ function card(id, title, type, price, image){
 function productDetail(id, title, type, price, description, image){
     return `<div class="modal product-detail-click" data-idmodal="${id}">
               <div class="container-left">
-                  <div class="img"><img src="../assets/img/img-product/${image}" alt=""></div>
+                  <div class="img"><img src="assets/img/img-product/${image}" alt=""></div>
               </div>
               <div class="container-right">
                   <h3 class="modal-title">${title}</h3>
