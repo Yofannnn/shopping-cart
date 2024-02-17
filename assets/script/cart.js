@@ -175,7 +175,6 @@ function cartItem(id, title, type, price, image, item, size){
                 </div>
                 <div class="description">
                     <h3 class="title" onclick="showCartItemsDetails(this)">${title}</h3>
-                    <h3 class="total-price">${rupiah.format(price * item)}</h3>
                     <p class="type">${type}</p>
                     <p class="price">${rupiah.format(price)}</p>
                     <p id="${size}" class="size">EU ${size}</p>
@@ -184,6 +183,7 @@ function cartItem(id, title, type, price, image, item, size){
                       <div class="quantity">${item}</div>
                       <i onclick="increment(this)" class="increment">+</i>
                     </div>
+                    <h3 class="total-price">${rupiah.format(price * item)}</h3>
                     <div class="remove" onclick="removeItem(this)">
                         <img src="assets/svg/garbage-trash-svgrepo-com.svg" alt="">
                     </div>
@@ -212,6 +212,11 @@ function productDetail(id, title, type, price, image, description, item, size){
             </div>
         </div>`
 };
+
+//loading
+window.addEventListener('load', () => {
+  document.querySelector('.container-loader').classList.remove('active');
+});
 
 
 // function clear all data in cart

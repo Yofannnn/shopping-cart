@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/style/navbar.css">
     <link rel="stylesheet" href="assets/style/card.css">
     <link rel="stylesheet" href="assets/style/modal.css">
+    <link rel="stylesheet" href="assets/style/load.css">
     <title>cart</title>
 </head>
 <body>
@@ -22,8 +23,7 @@
             </ul>
         </div>
         <div class="container-input">
-            <input type="search" placeholder="Search" name="search" class="input input-search">
-            <button class="btn-search"><img src="assets/svg/search-svgrepo-com.svg" alt=""></button>
+            <input type="search" class="search_input" placeholder="Search">
         </div>
         <div class="account-cart">
             <div class="account">
@@ -37,6 +37,12 @@
                 <span class="amountCart"></span>
             </div>
         </div>
+        <!-- humberger -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
     <!-- body cart -->
     <div class="body-cart">
@@ -48,6 +54,10 @@
 
     <!-- modal -->
     <div class="container-modal">
+    </div>
+
+    <div class="container-loader active">
+        <div class="loader"></div>
     </div>
 
     <script src="assets/script/cart.js"></script>

@@ -8,9 +8,8 @@ menuToggle.addEventListener('click', function(){
     document.querySelector('body').classList.toggle('stop');
 });
 
-
 // search
-const search = document.querySelector('.input-search');
+const search = document.querySelector('.search_input');
 search.addEventListener('keypress' , function(e) {
     if(e.keyCode == 13){
         // if(search.value !== ""){

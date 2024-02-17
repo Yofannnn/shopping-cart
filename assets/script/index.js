@@ -5,14 +5,14 @@ const article = document.querySelector('.description-brand');
 window.addEventListener('scroll' , function () {
     let scroll = window.scrollY;
     // parallax-->header
-    about.previousElementSibling.firstElementChild.firstElementChild.style.transform = `translateX(${0 + (scroll* -0.15)}px)`;
-    about.previousElementSibling.firstElementChild.lastElementChild.style.transform = `translateX(${0 + (scroll* 0.15)}px)`;
+    about.previousElementSibling.firstElementChild.firstElementChild.style.transform = `translateY(${0 + (scroll* 0.1)}px)`;
+    about.previousElementSibling.firstElementChild.lastElementChild.style.transform = `translateY(${0 + (scroll* 0.1)}px)`;
     about.previousElementSibling.lastElementChild.style.transform = `scale(${1 + (scroll*0.0002)})`;
     // parallax-->about
     about.firstElementChild.firstElementChild.style.transform = `translateY(${140 + (scroll* -0.18)}px)`;
     about.firstElementChild.lastElementChild.style.transform = `translateY(${50 + (scroll* -0.05)}px)`;
     // parallax-->two-image-wrapper
-    if(scroll >= twoImageWrappet.previousElementSibling.offsetTop + 5){
+    if(scroll >= twoImageWrappet.offsetTop - window.innerHeight){
         twoImageWrappet.firstElementChild.firstElementChild.classList.add('parallax');
         twoImageWrappet.lastElementChild.lastElementChild.classList.add('parallax');
     }
@@ -21,7 +21,7 @@ window.addEventListener('scroll' , function () {
         twoImageWrappet.lastElementChild.lastElementChild.classList.remove('parallax');
     };
     // parallax-->article
-    if(scroll >= article.previousElementSibling.offsetTop + 10){
+    if(scroll >= article.offsetTop - window.innerHeight){
         article.firstElementChild.firstElementChild.classList.add('parallax');
         article.firstElementChild.lastElementChild.classList.add('parallax');
         article.lastElementChild.firstElementChild.firstElementChild.classList.add('parallax');
@@ -154,7 +154,7 @@ function card(id, title, type, price, image){
                     <p class="text-type">${type}</p>
                 </div>
                 <div class="card-footer">
-                    <span class="text-title">${rupiah.format(price)}</span>
+                    <span class="text-price">${rupiah.format(price)}</span>
                 </div>
             </div> `
 };
@@ -170,7 +170,7 @@ function productDetail(id, title, type, price, description, image){
                   <h3 class="modal-price">${rupiah.format(price)}</h3>
                   <div class="modal-size">
                       <form>
-                          <h3>Size</h3>
+                          <label for="size">Size</label>
                           <select id="size" name="size">
                           <option value="undefined" disabled selected hidden>Choose Your Shoe Size</option>
                           <option value="40">EU 40</option>
@@ -194,3 +194,8 @@ function productDetail(id, title, type, price, description, image){
               </div>
           </div>`
 };
+
+//loading
+window.addEventListener('load', () => {
+    document.querySelector('.container-loader').classList.remove('active');
+});

@@ -5,6 +5,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: row;
+    z-index: 999999999;
 }
 .container-type .choice-type{
     width: 20%;
@@ -14,11 +15,16 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+.choice-type .choice-type ul{
+    width: 100%;
+    height: fit-content;
+}
 .container-type .choice-type ul li{
+    width: fit-content;
     font-size: 22px;
+    font-family: "Teko", sans-serif;
     padding: 10px 15px;
     margin: 5px;
-    cursor: pointer;
 }
 .container-type .choice-type ul li:hover{
     color: #707072;
@@ -26,7 +32,6 @@
 .container-type .choice-type ul li.active{
     font-size: 28px;
     text-decoration: underline;
-    padding-left: 18px;
 }
 .container-type .choice-type ul li.active:hover{
     color: inherit;
@@ -44,5 +49,47 @@
     overflow-y: auto;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+@media (max-width: 500px){
+    .container-type{
+        flex-direction: column;
+    }
+    .container-type .choice-type{
+        width: 100%;
+        height: 50px;
+        justify-content: center;
+        position: fixed;
+        top: 80px;
+        z-index: 7;
+        background-color: white;
+    }
+    .container-type .choice-type ul::-webkit-scrollbar {
+        height: 0px;
+    }
+    .container-type .choice-type ul::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+    .container-type .choice-type ul{
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .container-type .choice-type ul li{
+        font-size: 17px;
+        padding: 8px 12px;
+        margin: 5px;
+        white-space: nowrap;
+    }
+    .container-type .choice-type ul li.active{
+        font-size: 20px;
+    }
+    /* item card */
+    .container-type .items{
+        width: 100%;
+    }
 }

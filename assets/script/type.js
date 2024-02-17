@@ -175,7 +175,7 @@ function productDetail(id, title, type, price, description, image){
                   <h3 class="modal-price">${rupiah.format(price)}</h3>
                   <div class="modal-size">
                       <form>
-                          <h3>Size</h3>
+                          <label for="size">Size</label>
                           <select id="size" name="size">
                           <option value="undefined" disabled selected hidden>Choose Your Shoe Size</option>
                           <option value="40">EU 40</option>
@@ -199,3 +199,8 @@ function productDetail(id, title, type, price, description, image){
               </div>
           </div>`
 };
+
+//loading
+window.addEventListener('load', () => {
+  document.querySelector('.container-loader').classList.remove('active');
+});

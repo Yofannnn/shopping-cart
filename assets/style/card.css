@@ -1,7 +1,7 @@
 /* card style css */
 .card {
-    flex: 0 0 190px;
-    height: 300px;
+    flex: 0 0 150px;
+    height: 260px;
     padding: .5em;
     overflow: hidden;
     border-radius: .5rem;
@@ -27,8 +27,9 @@
     padding: 9% 5px 0 5px;
 }
 .card .text-title {
-    font-weight: 900;
+    font-family: "Teko", sans-serif;
     font-size: 1.2em;
+    font-weight: 500;
     line-height: 1.5;
     white-space: nowrap; 
     overflow: hidden;
@@ -51,5 +52,32 @@
 }
 .card .text-price{
     font-size: 1.1em;
-    font-weight: 800;
+    font-weight: 600;
+}
+
+@media (max-width: 600px){
+    .card {
+        flex: 0 0 130px;
+        height: 240px;
+    }
+    .card .text-title {
+        font-weight: 800;
+        font-size: 1em;
+        line-height: 1.5;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+    }
+    .card .text-type {
+        font-weight: 500;
+        font-size: .8em;
+        line-height: 1.5;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+    }
+    .card .text-price{
+        font-size: .9em;
+        font-weight: 700;
+    }
 }
