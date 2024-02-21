@@ -99,7 +99,7 @@ function increment(id) {
     if (size === 'undefined') {
       alert('Please select a size');
     } else {
-      cart.push({
+      cart.unshift({
         id: selectedItem.id,
         size: size,
         item: 1,

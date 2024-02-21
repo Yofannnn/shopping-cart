@@ -81,15 +81,18 @@
     padding: 5px 10px;
     margin: 0px 15px;
 }
-.list-product .container .description .cart-buttons-increment-decrement .increment,
+.list-product .container .description .cart-buttons-increment-decrement .increment{
+    cursor: pointer;
+    border: .5px solid black;
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-size: 20px;
+}
 .list-product .container .description .cart-buttons-increment-decrement .decrement{
     cursor: pointer;
     border: .5px solid black;
     border-radius: 50px;
-    height: 18px;
-    width: 18px;
-    text-align: center;
-    line-height: 18px;
+    padding: 5px 12.5px;
     font-size: 20px;
 }
 .list-product .container .description .remove{

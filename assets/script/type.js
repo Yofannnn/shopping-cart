@@ -6,7 +6,7 @@ const showCards = async function(){
     const product = await getDataProduct();
     showUICard(product);
   } catch(err){
-    const containerCard = document.querySelector('.items');
+    const containerCard = document.querySelector('.wrapped-items');
     containerCard.innerHTML = (err);
   };
 };
@@ -17,7 +17,7 @@ function showUICard(product) {
   product.forEach(p => {
     let { id, title, type, price, image } = p;
     cards += card(id, title, type, price, image);
-    const containerCard = document.querySelector('.items');
+    const containerCard = document.querySelector('.wrapped-items');
     containerCard.innerHTML = cards;
   });
 };
@@ -62,7 +62,7 @@ function increment(id) {
     if (size === 'undefined') {
       alert('Please select a size');
     } else {
-      cart.push({
+      cart.unshift({
         id: selectedItem.id,
         size: size,
         item: 1,
@@ -76,6 +76,7 @@ function increment(id) {
   localStorage.setItem("data", JSON.stringify(cart));
 };
 
+const sortOpt = document.querySelector('#sort');
 // select type active style
 const selected = document.querySelectorAll('.choice-type ul li');
 selected.forEach(el => {
@@ -87,6 +88,8 @@ selected.forEach(el => {
     if (!isActive) {
       this.classList.add('active');
     };
+    // to reset the sort
+    sortOpt.value = "undefined";
     // to show the category 
     showCardsChoose(this);
   });
@@ -97,25 +100,41 @@ const showCardsChoose = async function(el){
     const product = await getDataProduct();
     showUICardChoose(product , el);
   } catch(err){
-    const containerCard = document.querySelector('.items');
+    const containerCard = document.querySelector('.wrapped-items');
     containerCard.innerHTML = (err);
   };
 };
 
-function showUICardChoose(product , el) {
+function showUICardChoose(product, el) {
   let cards = '';
-  product.forEach(p => {
-    let { id, title, type, price, image, category } = p;
-    let chooseType = el.firstElementChild.innerHTML.toLowerCase();
-    const containerCard = document.querySelector('.items');
-    if(chooseType === category){
-      cards += card(id, title, type, price, image);
-      containerCard.innerHTML = cards;
-    } else if(el.firstElementChild.innerHTML === "All Shoes"){
-      showCards();
-    };
+  const chooseType = el.firstElementChild.innerHTML.toLowerCase();
+  const containerCard = document.querySelector('.wrapped-items');
+  let filteredProducts;
+
+  if (chooseType === 'all shoes') {
+    filteredProducts = product;
+  } else {
+    filteredProducts = product.filter(p => chooseType === p.category.toLowerCase());
+  };
+
+  if (sortOpt.value === "low-high") {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (sortOpt.value === "high-low") {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  };
+
+  filteredProducts.forEach(p => {
+    const { id, title, type, price, image } = p;
+    cards += card(id, title, type, price, image);
   });
+
+  containerCard.innerHTML = cards;
 };
+
+sortOpt.addEventListener('change', function () {
+  const activeCategory = document.querySelector('.choice-type ul li.active');
+  showCardsChoose(activeCategory);
+});
 
 let calculation = () => {
   const cartIcon = document.querySelector(".amountCart");
@@ -177,14 +196,14 @@ function productDetail(id, title, type, price, description, image){
                       <form>
                           <label for="size">Size</label>
                           <select id="size" name="size">
-                          <option value="undefined" disabled selected hidden>Choose Your Shoe Size</option>
-                          <option value="40">EU 40</option>
-                          <option value="41">EU 41</option>
-                          <option value="42">EU 42</option>
-                          <option value="43">EU 43</option>
-                          <option value="44">EU 44</option>
-                          <option value="45">EU 45</option>
-                          <option value="46">EU 46</option>
+                            <option value="undefined" disabled selected hidden>Choose Your Shoe Size</option>
+                            <option value="40">EU 40</option>
+                            <option value="41">EU 41</option>
+                            <option value="42">EU 42</option>
+                            <option value="43">EU 43</option>
+                            <option value="44">EU 44</option>
+                            <option value="45">EU 45</option>
+                            <option value="46">EU 46</option>
                           </select>
                           <span><a href="">Size Guide</a></span>
                       </form>

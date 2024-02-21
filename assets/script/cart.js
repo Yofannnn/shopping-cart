@@ -1,6 +1,6 @@
 let cart = JSON.parse(localStorage.getItem("data")) || [];
 
-const label = document.querySelector('.total-product')//gantiii variabel inii
+const totalPriceProduct = document.querySelector('.total-product');
 
 const showCartItems = async function(){
   try{
@@ -121,7 +121,7 @@ function showUITotalAmount(product){
       return filterData.price * item;
     })
     .reduce((x, y) => x + y, 0);
-    return (label.innerHTML = `
+    return (totalPriceProduct.innerHTML = `
     <div class="wrapped">
       <h1>Summary</h1>
       <p class="subtotal">Subtotal : ${rupiah.format(amount)}</p>
@@ -179,9 +179,9 @@ function cartItem(id, title, type, price, image, item, size){
                     <p class="price">${rupiah.format(price)}</p>
                     <p id="${size}" class="size">EU ${size}</p>
                     <div class="cart-buttons-increment-decrement">
-                      <i onclick="decrement(this)" class="decrement">-</i>
+                      <button class="decrement" onclick="decrement(this)">-</button>
                       <div class="quantity">${item}</div>
-                      <i onclick="increment(this)" class="increment">+</i>
+                      <button class="increment" onclick="increment(this)">+</button>
                     </div>
                     <h3 class="total-price">${rupiah.format(price * item)}</h3>
                     <div class="remove" onclick="removeItem(this)">

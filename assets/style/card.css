@@ -61,23 +61,12 @@
         height: 240px;
     }
     .card .text-title {
-        font-weight: 800;
         font-size: 1em;
-        line-height: 1.5;
-        white-space: nowrap; 
-        overflow: hidden;
-        text-overflow: ellipsis; 
     }
     .card .text-type {
-        font-weight: 500;
         font-size: .8em;
-        line-height: 1.5;
-        white-space: nowrap; 
-        overflow: hidden;
-        text-overflow: ellipsis; 
     }
     .card .text-price{
         font-size: .9em;
-        font-weight: 700;
     }
 }

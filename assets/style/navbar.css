@@ -87,6 +87,7 @@ nav .account-cart .cart .amountCart{
     left: 22px;
     font-size: 14px;
     font-family: "Roboto", sans-serif;
+    pointer-events: none;
 }
 /* humberger */
 .menu-toggle{
@@ -142,6 +143,9 @@ nav .account-cart .cart .amountCart{
         z-index: 9999999;
         display: flex;
     }
+    nav .container-input {
+        width: 30%;
+    }
 }
 
 @media (max-width: 770px){
@@ -150,8 +154,13 @@ nav .account-cart .cart .amountCart{
     }
 }
 @media (max-width: 550px){
+    nav .container-input {
+        width: 35%;
+    }
+    nav .account-cart .account img{
+        padding-right: 0px;
+    }
     nav .account-cart .account a p{
         display: none;
     }
-
 }
