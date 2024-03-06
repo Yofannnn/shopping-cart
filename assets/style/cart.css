@@ -125,17 +125,17 @@
 .total-product .subtotal{
     font-size: 19px;
     margin-top: 15px;
-    font-family: "Playfair Display", serif;
+    font-family: "Poppins", sans-serif;
 }
 .total-product .discount{
     font-size: 19px;
     margin-top: 15px;
-    font-family: "Playfair Display", serif;
+    font-family: "Poppins", sans-serif;
 }
 .total-product .total{
     font-size: 19px;
     margin-top: 15px;
-    font-family: "Playfair Display", serif;
+    font-family: "Poppins", sans-serif;
 }
 .total-product button.checkout{
     width: 80%;
@@ -146,8 +146,8 @@
 }
 /* when cart is empty */
 .cart-empty{
-    font-size: 50px;
-    font-family: "Roboto", sans-serif;
+    font-size: 60px;
+    font-family: "Teko", sans-serif;
     margin: auto;
     text-align: center;
 }
@@ -164,6 +164,11 @@
         justify-content: center;
         position: absolute;
         bottom: 0;
+        overflow: hidden;
+    }
+    .total-product .wrapped{
+        height: 100%;
+        justify-content: center;
     }
     .total-product button.checkout{
         margin-bottom: 20px;

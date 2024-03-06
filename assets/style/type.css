@@ -32,6 +32,7 @@
 .container-type .choice-type ul li.active{
     font-size: 28px;
     text-decoration: underline;
+    font-family: "Anta", sans-serif;
 }
 .container-type .choice-type ul li.active:hover{
     color: inherit;
@@ -47,9 +48,13 @@
     padding: 6%;
     border: 1px solid #e5e5e5;
     margin: auto;
+    font-size: 18px;
+    font-family: "Teko", sans-serif;
 }
 .container-type .choice-type form  select option{
     padding-top: 20px;
+    font-size: 18px;
+    font-family: "Teko", sans-serif;
 }
 /* items container */
 .items::-webkit-scrollbar {

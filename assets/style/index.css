@@ -24,7 +24,7 @@ header .container-text{
     color: white;
 }
 header .container-text h1{
-    font-size: 100px;
+    font-size: 130px;
     text-align: center;
     width: 80%;
     font-family: "Teko", sans-serif;
@@ -80,7 +80,7 @@ header .container-bg{
 }
 .about .container-parallax .picture h3{
     font-size: 35px;
-    font-family: "Teko", sans-serif;
+    font-family: "Anta", sans-serif;
     transform: rotate(-10deg) translateY(-25px);
 }
 .about .container-parallax .text{
@@ -93,12 +93,12 @@ header .container-bg{
 }
 .about .container-parallax .text h3{
     font-size: 30px;
-    font-family: "Teko", sans-serif;
+    font-family: "Playfair Display", serif;
     padding-bottom: 20px;
 }
 .about .container-parallax .text p{
     font-size: 17px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
     width: 65%;
 }
 .about .container-bg-parallax{
@@ -159,7 +159,8 @@ header .container-bg{
 }
 .description-brand .container-bg h3{
     font-size: 50px;
-    font-family: "Playfair Display", serif;
+    font-family: "Shrikhand", serif;
+    font-weight: 400;
     opacity: 0;
     transform: translateY(50px);
 }
@@ -169,7 +170,7 @@ header .container-bg{
     transition: all 4s;
 }
 .description-brand .container-bg p{
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
     width: 20%;
     transform: translate(20% , 50px);
     opacity: 0;
@@ -225,8 +226,8 @@ header .container-bg{
     text-align: center;
     margin-top: 100px;
     margin-bottom: 40px;
-    font-size: 45px;
-    font-family: "Teko", sans-serif;
+    font-size: 40px;
+    font-family: "Playfair Display", serif;
 }
 .product-type .type{
     width: 35%;
@@ -297,7 +298,7 @@ header .container-bg{
     text-align: center;
     padding-top: 60px;
     font-size: 40px;
-    font-family: "Teko", sans-serif;
+    font-family: "Playfair Display", serif;
 }
 .scroll-horizontal::-webkit-scrollbar {
     height: 6px;
@@ -396,4 +397,11 @@ header .container-bg{
     .product-type .type{
         width:60%;
     }
+    .product-type h1{
+        font-size: 35px;
+    }
+    .recommendation h1{
+        font-size: 35px;
+    }
+
 }

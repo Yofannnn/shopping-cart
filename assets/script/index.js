@@ -39,8 +39,8 @@ let cart = JSON.parse(localStorage.getItem("data")) || [];
 
 const showRecommendation = async function(){
     try{
-        const product = await getDataRecommendation();
-        showUICard(product);
+        const products = await getDataRecommendation();
+        showUICard(products);
     } catch(err) {
         const recommendation = document.querySelector('.scroll-horizontal');
         recommendation.innerHTML = (err);
@@ -48,9 +48,9 @@ const showRecommendation = async function(){
 };
 showRecommendation();
 
-function showUICard(product){
+function showUICard(products){
     let cards = '';
-    product.forEach(p => {
+    products.forEach(p => {
         if (p.recommendation === true) {
             let { id, title, type, price, image } = p;
             cards += card(id, title, type, price, image);
@@ -70,9 +70,9 @@ const showRecommendationDetail = async function(el){
     };
 };
 
-function showDetail(product , cardClicked){
+function showDetail(products , cardClicked){
     let productDetails = '';
-    product.forEach(p => {
+    products.forEach(p => {
         let { id, title, type, price, description, image } = p;
         productDetails = productDetail(id, title, type, price, description, image);
         const modalBody = document.querySelector('.container-modal');
@@ -90,6 +90,30 @@ function showDetail(product , cardClicked){
         };
     });
 };
+
+const showFlashMsg = async function(el){
+    try{
+        let clicked = el;
+        const products = await getDataRecommendation();
+        showUIFlashMsg(products , clicked);
+    } catch(err) {
+        const containerFlashMsg = document.querySelector('.container-flash-msg');
+        containerFlashMsg.innerHTML = `<div class="flash-msg">${err}</div>`
+    };
+}
+
+function showUIFlashMsg (products, clicked){
+    let productFlashMsg = '';
+    const filtered = products.find(x => x.id === clicked.parentElement.parentElement.dataset.idmodal);
+    const size = clicked.previousElementSibling.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling.value
+    productFlashMsg = flashMsg(filtered.title, size)
+    const containerFlashMsg = document.querySelector('.container-flash-msg');
+    containerFlashMsg.innerHTML = productFlashMsg;
+    const myTimeout = setTimeout(stopFlashMsg, 4000);
+    function stopFlashMsg(){
+        containerFlashMsg.innerHTML = '';
+    }
+}
 
 function increment(id) {
   let selectedItem = id;
@@ -185,7 +209,7 @@ function productDetail(id, title, type, price, description, image){
                       </form>
                   </div>
                   <a class="check-out" href="account/login.html">Check Out</a>
-                  <div class="add-cart" onclick="increment(${id})">Add to Cart</div>
+                  <button class="add-cart" onclick="increment(${id}); showFlashMsg(this);">Add to Cart</button>
                   <p class="modal-description">${description}</p>
                   <div class="close-btn-pop-up">
                       <span></span>
@@ -194,6 +218,10 @@ function productDetail(id, title, type, price, description, image){
               </div>
           </div>`
 };
+
+function flashMsg(title, size){
+    return `<div class="flash-msg">${title} size ${size} success add to cart</div>`
+}
 
 //loading
 window.addEventListener('load', () => {
