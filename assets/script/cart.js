@@ -1,5 +1,8 @@
 let cart = JSON.parse(localStorage.getItem("data")) || [];
 
+// initial import modules
+import {getDataProduct, calculation} from "../modules/module.js"
+
 const totalPriceProduct = document.querySelector('.total-product');
 
 const showCartItems = async function(){
@@ -33,6 +36,9 @@ function showUICard(product){
   };
 };
 
+// calculation items in widget and display
+calculation(cart);
+
 const showCartItemsDetails = async function(el){
   try{
     let cartCliked = el
@@ -44,62 +50,89 @@ const showCartItemsDetails = async function(el){
   };
 };
 
+// event listener cart items clicked
+document.addEventListener('click', async function(e) {
+  const targetElement = e.target.closest('.cart-item .img') || e.target.closest('.cart-item .title')
+  if (targetElement) {
+    try{
+      const product = await getDataProduct();
+      showUIDetail(product , targetElement);
+    } catch(err){
+      const listCart = document.querySelector('.list-product');
+      listCart.innerHTML = (err);
+    };
+  }
+})
+
 function showUIDetail(product , cardClicked){
   let productDetails = '';
-    cart.forEach(x => {
-      let { id, item, size } = x;
-      let search = product.find((x) => x.id === id) || [];
-      let { image, price, title, type, description } = search;
-      productDetails = productDetail(id, title, type, price, image, description, item, size);
+  cart.forEach(x => {
+    let { id, item, size } = x;
+    let search = product.find((x) => x.id === id);
+    let { image, price, title, type, description } = search;
+    productDetails = productDetail(id, title, type, price, image, description, item, size);
+    const modalBody = document.querySelector('.container-modal');
+    if(cardClicked.parentElement.parentElement.dataset.idcart === id+size){
+      modalBody.innerHTML = productDetails;
+      document.querySelector('body').classList.add('stop');
+    };
+  });
+};
+
+// event listener for remove modal
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.close-btn-pop-up')) {
       const modalBody = document.querySelector('.container-modal');
-      if(cardClicked.parentElement.parentElement.dataset.idcart === id+size){
-        modalBody.innerHTML = productDetails;
-        // make body can't scroll
-        const body = document.querySelector('body');
-        body.classList.add('stop');
-        // close product detail
-        const closeProductDetail = document.querySelector('.close-btn-pop-up');
-        closeProductDetail.addEventListener('click' , function() {
-            closeProductDetail.parentElement.parentElement.classList.add('close');
-            body.classList.remove('stop');
-        });
-      };
-    });
-};
-
-let increment = (el) => {
-  let selectedItem = el.parentElement.parentElement.parentElement;
-  let search = cart.find(x => x.id+x.size === selectedItem.dataset.idcart);
-  search.item ++;
-  showCartItems();
-  calculation(selectedItem);
-  totalAmount();
-  localStorage.setItem("data", JSON.stringify(cart));
-};
-
-let decrement = (el) => {
-  let selectedItem = el.parentElement.parentElement.parentElement;
-  let search = cart.find(x => x.id+x.size === selectedItem.dataset.idcart);
-  if (search === undefined) return;
-  else if (search.item === 0) return;
-  else {
-    search.item --;
+      modalBody.innerHTML = ""
+      document.querySelector('body').classList.remove('stop')
   }
-  showCartItems();
-  calculation(selectedItem);
-  totalAmount();
-  cart = cart.filter((x) => x.item !== 0);
-  localStorage.setItem("data", JSON.stringify(cart));
-};
+})
 
-let removeItem = (el) => {
-  let selectedItem = el.parentElement.parentElement;
+// event listener for increment btn
+document.addEventListener('click', function(e) {
+  const incrementBtn = e.target.closest('.increment')
+  if (incrementBtn) {
+    let selectedItem = incrementBtn.parentElement.parentElement.parentElement;
+    let search = cart.find(x => x.id+x.size === selectedItem.dataset.idcart);
+    search.item ++;
+    showCartItems();
+    calculation(cart);
+    totalAmount();
+    localStorage.setItem("data", JSON.stringify(cart));
+  }
+})
+
+// event listener for decrement btn
+document.addEventListener('click', function(e) {
+  const decrementBtn = e.target.closest('.decrement')
+  if (decrementBtn) {
+    let selectedItem = decrementBtn.parentElement.parentElement.parentElement;
+    let search = cart.find(x => x.id+x.size === selectedItem.dataset.idcart);
+    if (search === undefined) return;
+    else if (search.item === 0) return;
+    else {
+      search.item --;
+    }
+    showCartItems();
+    calculation(cart);
+    totalAmount();
+    cart = cart.filter((x) => x.item !== 0);
+    localStorage.setItem("data", JSON.stringify(cart));
+  }
+})
+
+// event listener for remove btn
+document.addEventListener('click', function(e) {
+  const removeBtn = e.target.closest('.remove')
+  if (removeBtn) {
+  let selectedItem = removeBtn.parentElement.parentElement;
   cart = cart.filter((x) => x.id+x.size !== selectedItem.dataset.idcart);
-  calculation();
+  calculation(cart);
   showCartItems();
   totalAmount();
   localStorage.setItem("data", JSON.stringify(cart));
-};
+  }
+})
 
 const totalAmount = async function(){
   try{
@@ -132,35 +165,6 @@ function showUITotalAmount(product){
   } else return;
 };
 
-// navbar bedge total amount
-let calculation = () => {
-  const cartIcon = document.querySelector(".amountCart");
-  if(cart.length !== 0){
-    cartIcon.style.display = "inline-block"
-    cartIcon.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
-  } else{
-    cartIcon.style.display = "none"
-  };
-};
-calculation();
-
-// fetch json
-function getDataProduct(){
-  return fetch('assets/data/product.json')
-  .then(response => {
-    if(!response.ok){
-      throw new Error(response.statusText);
-    }
-    return response.json();
-  })
-  .then(response => {
-    if(response.Response === 'False'){
-      throw new Error(response.Error);
-    }
-    return response.product;
-  });
-};
-
 // Format a Number as Currency
 let rupiah = new Intl.NumberFormat('id-ID', {
   style: 'currency',
@@ -169,22 +173,22 @@ let rupiah = new Intl.NumberFormat('id-ID', {
 });
 
 function cartItem(id, title, type, price, image, item, size){
-  return `<div class="container" data-idcart="${id}${size}">
+  return `<div class="container cart-item" data-idcart="${id}${size}">
                 <div class="image">
-                    <img src="assets/img/img-product/${image}" alt="" onclick="showCartItemsDetails(this)">
+                    <img class="img" src="assets/img/img-product/${image}" alt="">
                 </div>
                 <div class="description">
-                    <h3 class="title" onclick="showCartItemsDetails(this)">${title}</h3>
+                    <h3 class="title">${title}</h3>
                     <p class="type">${type}</p>
                     <p class="price">${rupiah.format(price)}</p>
                     <p id="${size}" class="size">EU ${size}</p>
                     <div class="cart-buttons-increment-decrement">
-                      <button class="decrement" onclick="decrement(this)">-</button>
+                      <button class="decrement">-</button>
                       <div class="quantity">${item}</div>
-                      <button class="increment" onclick="increment(this)">+</button>
+                      <button class="increment">+</button>
                     </div>
                     <h3 class="total-price">${rupiah.format(price * item)}</h3>
-                    <div class="remove" onclick="removeItem(this)">
+                    <div class="remove">
                         <img src="assets/svg/garbage-trash-svgrepo-com.svg" alt="">
                     </div>
                 </div>
@@ -223,7 +227,7 @@ window.addEventListener('load', () => {
 let clearCart = () => {
   cart = [];
   showCartItems();
-  calculation();
+  calculation(cart);
   localStorage.setItem("data", JSON.stringify(cart));
 };
 // clearCart();

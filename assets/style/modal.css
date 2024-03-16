@@ -12,9 +12,6 @@
     flex-direction: row;
     overflow: hidden;
 }
-.product-detail-click.close{
-    display: none;
-}
 .product-detail-click .container-left{
     width: 50%;
     height: 100%;

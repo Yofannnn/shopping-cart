@@ -37,9 +37,13 @@ window.addEventListener('scroll' , function () {
 // get data from localstorage
 let cart = JSON.parse(localStorage.getItem("data")) || [];
 
+// initial import modules
+import {getDataProduct, card, showDetailModal, increment, showFlashMsg, calculation} from "../modules/module.js"
+
+// show product card
 const showRecommendation = async function(){
     try{
-        const products = await getDataRecommendation();
+        const products = await getDataProduct();
         showUICard(products);
     } catch(err) {
         const recommendation = document.querySelector('.scroll-horizontal');
@@ -50,180 +54,48 @@ showRecommendation();
 
 function showUICard(products){
     let cards = '';
-    products.forEach(p => {
-        if (p.recommendation === true) {
-            let { id, title, type, price, image } = p;
-            cards += card(id, title, type, price, image);
-            const containerRecommendation = document.querySelector('.recommendation .container');
-            containerRecommendation.innerHTML = cards;
-        };
+    products.filter(p => p.recommendation === true).forEach(p => {
+        let { id, title, type, price, image } = p;
+        cards += card(id, title, type, price, image);
+        const containerRecommendation = document.querySelector('.recommendation .container');
+        containerRecommendation.innerHTML = cards;
     });
 };
 
-const showRecommendationDetail = async function(el){
-    try{
-        let cardClicked = el;
-        const products = await getDataRecommendation();
-        showDetail(products , cardClicked);
-    } catch(err) {
-        alert(err);
-    };
-};
+// calculation items in widget and display
+calculation(cart);
 
-function showDetail(products , cardClicked){
-    let productDetails = '';
-    products.forEach(p => {
-        let { id, title, type, price, description, image } = p;
-        productDetails = productDetail(id, title, type, price, description, image);
+// event listener for modal when card clicked
+document.addEventListener('click', async function(e) {
+    let cardClicked = e.target.closest('.card');
+    if (cardClicked) {
+        try{
+            const products = await getDataProduct();
+            showDetailModal(products , cardClicked);
+        } catch(err) {
+            alert(err);
+        };
+    }
+})
+
+// event listener for adding items to cart and flash msg at button
+document.addEventListener('click', async function(e) {
+    if(e.target.classList.contains('add-cart')) {
+        increment(cart, e.target)
+        showFlashMsg(e.target)
+    }
+})
+
+// event listener for remove modal
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.close-btn-pop-up')) {
         const modalBody = document.querySelector('.container-modal');
-        if (cardClicked.dataset.idcard === p.id){
-            modalBody.innerHTML = productDetails;
-            // make body can't scroll
-            const body = document.querySelector('body');
-            body.classList.add('stop');
-            // close product detail
-            const closeProductDetail = document.querySelector('.close-btn-pop-up');
-            closeProductDetail.addEventListener('click' , function(e) {
-                e.target.parentElement.parentElement.classList.add('close');
-                body.classList.remove('stop');
-            });
-        };
-    });
-};
-
-const showFlashMsg = async function(el){
-    try{
-        let clicked = el;
-        const products = await getDataRecommendation();
-        showUIFlashMsg(products , clicked);
-    } catch(err) {
-        const containerFlashMsg = document.querySelector('.container-flash-msg');
-        containerFlashMsg.innerHTML = `<div class="flash-msg">${err}</div>`
-    };
-}
-
-function showUIFlashMsg (products, clicked){
-    let productFlashMsg = '';
-    const filtered = products.find(x => x.id === clicked.parentElement.parentElement.dataset.idmodal);
-    const size = clicked.previousElementSibling.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling.value
-    productFlashMsg = flashMsg(filtered.title, size)
-    const containerFlashMsg = document.querySelector('.container-flash-msg');
-    containerFlashMsg.innerHTML = productFlashMsg;
-    const myTimeout = setTimeout(stopFlashMsg, 4000);
-    function stopFlashMsg(){
-        containerFlashMsg.innerHTML = '';
+        modalBody.innerHTML = ""
+        document.querySelector('body').classList.remove('stop')
     }
-}
+})
 
-function increment(id) {
-  let selectedItem = id;
-  let size = document.querySelector('#size').value;
-  let search = cart.find((x) => x.id === selectedItem.id && x.size === size);
-  if (search === undefined) {
-    if (size === 'undefined') {
-      alert('Please select a size');
-    } else {
-      cart.unshift({
-        id: selectedItem.id,
-        size: size,
-        item: 1,
-      });
-    }
-  } else {
-    search.item++;
-  }
-  calculation(selectedItem.id);
-  localStorage.setItem("data", JSON.stringify(cart));
-};
-
-let calculation = () => {
-    const cartIcon = document.querySelector(".amountCart");
-    if(cart.length !== 0){
-      cartIcon.style.display = "inline-block"
-      cartIcon.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
-    } else{
-      cartIcon.style.display = "none"
-    };
-  };
-  calculation();
-
-function getDataRecommendation(){
-    return fetch('assets/data/product.json')
-      .then(response => {
-        if(!response.ok){
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then(response => {
-        if(response.Response === 'False'){
-          throw new Error(response.Error);
-        }
-        return response.product;
-      });
-};
-
-// Format a Number as Currency
-let rupiah = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits : 0 ,
-});
-
-function card(id, title, type, price, image){
-  return ` <div id="${id}" class="card card-recommendation" data-idcard="${id}" onclick="showRecommendationDetail(this)">
-                <div class="card-img"><img src="assets/img/img-product/${image}" alt=""></div>
-                <div class="card-info">
-                    <p class="text-title">${title}</p>
-                    <p class="text-type">${type}</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-price">${rupiah.format(price)}</span>
-                </div>
-            </div> `
-};
-
-function productDetail(id, title, type, price, description, image){
-    return `<div class="modal product-detail-click" data-idmodal="${id}">
-              <div class="container-left">
-                  <div class="img"><img src="assets/img/img-product/${image}" alt=""></div>
-              </div>
-              <div class="container-right">
-                  <h3 class="modal-title">${title}</h3>
-                  <p class="modal-type">${type}</p>
-                  <h3 class="modal-price">${rupiah.format(price)}</h3>
-                  <div class="modal-size">
-                      <form>
-                          <label for="size">Size</label>
-                          <select id="size" name="size">
-                          <option value="undefined" disabled selected hidden>Choose Your Shoe Size</option>
-                          <option value="40">EU 40</option>
-                          <option value="41">EU 41</option>
-                          <option value="42">EU 42</option>
-                          <option value="43">EU 43</option>
-                          <option value="44">EU 44</option>
-                          <option value="45">EU 45</option>
-                          <option value="46">EU 46</option>
-                          </select>
-                          <span><a href="">Size Guide</a></span>
-                      </form>
-                  </div>
-                  <a class="check-out" href="account/login.html">Check Out</a>
-                  <button class="add-cart" onclick="increment(${id}); showFlashMsg(this);">Add to Cart</button>
-                  <p class="modal-description">${description}</p>
-                  <div class="close-btn-pop-up">
-                      <span></span>
-                      <span></span>
-                  </div>
-              </div>
-          </div>`
-};
-
-function flashMsg(title, size){
-    return `<div class="flash-msg">${title} size ${size} success add to cart</div>`
-}
-
-//loading
+// loading
 window.addEventListener('load', () => {
     document.querySelector('.container-loader').classList.remove('active');
 });
