@@ -3,188 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style/index.css">
-    <link rel="stylesheet" href="assets/style/css-reset.css">
-    <link rel="stylesheet" href="assets/style/navbar.css">
-    <link rel="stylesheet" href="assets/style/card.css">
-    <link rel="stylesheet" href="assets/style/modal.css">
-    <link rel="stylesheet" href="assets/style/footer.css">
-    <link rel="stylesheet" href="assets/style/load.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shrikhand&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/index.css">
     <title>Shopping Cart</title>
 </head>
 <body>
-    <!-- navbar -->
-    <nav>
-        <div class="logo"><a href=""><img src="assets/svg/logo-svgrepo-com.svg" alt=""></a></div>
-        <div class="menu">
-            <ul>
-                <li><a href="type.html">Product</a></li>
-                <li><a href="">Aboute Us</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
-        <div class="container-input">
-            <input type="search" class="search_input" placeholder="Search">
-        </div>
-        <div class="account-cart">
-            <div class="account">
-                <a href="account/login.html">
-                    <img src="assets/svg/account-avatar-man-svgrepo-com.svg" alt="">
-                    <p>Account</p>
-                </a>
-            </div>
-            <div class="cart">
-                <a href="cart.html"><img src="assets/svg/cart-svgrepo-com.svg" alt=""></a>
-                <span class="amountCart"></span>
-            </div>
-        </div>
-        <!-- humberger -->
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-    <!-- header -->
-    <header>
-        <div class="container-text">
-            <h1><span>Y</span>our Bran<span>d</span></h1>
-            <p>this can use for description your brand</p>
-        </div>
-        <div class="container-bg"></div>
-    </header>
-    <!-- about -->
-    <section class="about">
-        <div class="container-parallax">
-            <div class="picture">
-                <img src="assets/img/luis-felipe-lins-J2-wAQDckus-unsplash.jpg" alt="">
-                <h3>Brand Slogan</h3>
-            </div>
-            <div class="text">
-                <h3>This is , <br> Your Brand</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur, praesentium quibusdam? Numquam ipsum iusto inventore dolorem</p>
-            </div>
-        </div>
-        <div class="container-bg-parallax">
-            <img src="assets/img/danilo-capece-NoVnXXmDNi0-unsplash.jpg" alt="">
-        </div>
-    </section>
-    <section class="two-image-wrapper">
-        <div class="img">
-            <div class="img-1"></div>
-        </div>
-        <div class="img">
-            <div class="img-2"></div>
-        </div>
-    </section>
-    <article class="description-brand">
-        <div class="container-bg">
-            <h3>Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis atque voluptas, dignissimos repudiandae recusandae cumq Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur sit quam dolores error at, officia magnam ipsam dolor aut quibusdam, ab maiores minus corporis animi aperiam, doloribus debitis voluptatum.</p>
-        </div>
-        <div class="container-img">
-            <div class="static">
-                <img src="assets/img/tim-mossholder-PJYgzfqB-TI-unsplash.jpg" alt="">
-            </div>
-            <div class="move">
-                <img class="two" src="assets/img/two-icee-dc-unsplash.jpg" alt="">
-                <img class="one" src="assets/img/one-luis-felipe-lins-unsplash.jpg" alt="">
-            </div>
-        </div>
-    </article>
-    <section class="product-type">
-        <h1>Collection</h1>
-        <div class="type one">
-            <a href="type.html">
-                <div class="img">
-                    <h3>Shop Now<img src="assets/svg/right-arrow-svgrepo-com.svg" alt=""></h3>
-                </div>
-                <div class="text">
-                    <h3>Lifestyle</h3>
-                </div>
-            </a>
-        </div>
-        <div class="type two">
-            <a href="type.html">
-                <div class="img">
-                    <h3>Shop Now<img src="assets/svg/right-arrow-svgrepo-com.svg" alt=""></h3>
-                </div>
-                <div class="text">
-                    <h3>Football</h3>
-                </div>
-            </a>
-        </div>
-        <div class="type three">
-            <a href="type.html">
-                <div class="img">
-                    <h3>Shop Now<img src="assets/svg/right-arrow-svgrepo-com.svg" alt=""></h3>
-                </div>
-                <div class="text">
-                    <h3>Running</h3>
-                </div>
-            </a>
-        </div>
-        <div class="type four">
-            <a href="type.html">
-                <div class="img">
-                    <h3>Shop Now<img src="assets/svg/right-arrow-svgrepo-com.svg" alt=""></h3>
-                </div>
-                <div class="text">
-                    <h3>Basketball</h3>
-                </div>
-            </a>
-        </div>
-    </section>
-    <section class="recommendation">
-        <h1>Recommended for You</h1>
-        <div class="container scroll-horizontal">
-        </div>
-    </section>
-    <footer>
-        <div class="contact">
-            <h4>Contact</h4>
-            <ul>
-                <li><address>500 Terry Francine Street San Francisco, CA 94158</address></li>
-                <li>thisIsEmail@gmail.com</li>
-                <li>123-456-789</li>
-            </ul>
-        </div>
-        <div class="menu-footer">
-            <h4>Menu</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="type.html">Product</a></li>
-                <li><a href="service.html">Service</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="src.html">Resources</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </div>
-        <div class="social-media">
-            <h4>Follow us on</h4>
-            <ul>
-                <li><a href="">Facebook</a></li>
-                <li><a href="">Instagram</a></li>
-                <li><a href="">Twitter</a></li>
-            </ul>
-        </div>
-        <div class="copyright"><a href="https://github.com/Yofannnn">©YOFAN</a></div>
-    </footer>
-
-    <div class="container-modal"></div>
-
-    <div class="container-flash-msg"></div>
-
-    <div class="container-loader active">
-        <div class="loader"></div>
+    <!-- badge and navigation to cart page -->
+    <a href="cart.html" class="position-absolute top-0 end-0 mt-5 me-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+          </svg>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none cart-nav">
+        </span>
+    </a>
+    <!-- title -->
+    <h1 class="text-center mt-4">Products</h1>
+    <!-- container card -->
+    <div class="container mt-4 d-grid container-card">
+        <!-- this is will render card from js file -->
     </div>
-
-    <script type="module" src="assets/modules/module.js"></script>
-    <script type="module" src="assets/script/index.js"></script>
-    <script src="assets/script/navbar.js"></script>
-
+    <script src="script/products.js"></script>
 </body>
 </html>

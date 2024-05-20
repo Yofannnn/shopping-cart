@@ -3,69 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style/cart.css">
-    <link rel="stylesheet" href="assets/style/css-reset.css">
-    <link rel="stylesheet" href="assets/style/navbar.css">
-    <link rel="stylesheet" href="assets/style/card.css">
-    <link rel="stylesheet" href="assets/style/modal.css">
-    <link rel="stylesheet" href="assets/style/load.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shrikhand&family=Teko:wght@300..700&display=swap" rel="stylesheet">
-    <title>cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/index.css">
+    <title>Cart</title>
 </head>
 <body>
-    <!-- navbar -->
-    <nav class="fixed">
-        <div class="logo"><a href="index.html"><img src="assets/svg/logo-svgrepo-com.svg" alt=""></a></div>
-        <div class="menu">
-            <ul>
-                <li><a href="type.html">Product</a></li>
-                <li><a href="">Aboute Us</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
-        <div class="container-input">
-            <input type="search" class="search_input" placeholder="Search">
-        </div>
-        <div class="account-cart">
-            <div class="account">
-                <a href="account/login.html">
-                    <img src="assets/svg/account-avatar-man-svgrepo-com.svg" alt="">
-                    <p>Account</p>
-                </a>
-            </div>
-            <div class="cart">
-                <a href="cart.html"><img src="assets/svg/cart-svgrepo-com.svg" alt=""></a>
-                <span class="amountCart"></span>
-            </div>
-        </div>
-        <!-- humberger -->
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-    <!-- body cart -->
-    <div class="body-cart">
-        <div class="list-product">
-        </div>
-        <div class="total-product">
-        </div>
+    <!-- navigation -->
+    <a href="index.html" class="btn btn-primary position-absolute top-0 end-0 mt-4 me-5">
+        &#8592; Back
+    </a>
+    <!-- title -->
+    <h1 class="text-center mt-4 mb-3">Cart</h1>
+    <!-- container total price all items -->
+    <div class="container text-center m-2 position-relative bottom-0 start-50 translate-middle-x bg-info-subtle card-total-ammount">
+        <!-- will render total price all items -->
     </div>
-
-    <!-- modal -->
-    <div class="container-modal">
+    <!-- container card -->
+    <div class="container mt-4 mb-3 d-grid container-card">
+        <!-- this will render card of data cart from cart js file -->
     </div>
-
-    <div class="container-loader active">
-        <div class="loader"></div>
-    </div>
-
-    <script type="module" src="assets/modules/module.js"></script>
-    <script type="module" src="assets/script/cart.js"></script>
-    <script src="assets/script/navbar.js"></script>
-
+    <script src="script/cart.js"></script>
 </body>
 </html>

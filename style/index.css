@@ -1,0 +1,17 @@
+.container-card{
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20%), 1fr));
+    gap: .5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .container-card{
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 30%), 1fr));
+        gap: .5rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .container-card{
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 40%), 1fr));
+    }
+}
